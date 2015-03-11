@@ -4,13 +4,13 @@ title: javascript获取页面高度、宽度相关信息
 category: javascript
 keywords: javascript height
 ---
-###浏览器区别
+### 浏览器区别
 
 * Netscape -->window
 
 * IE -->document.body
 
-###使用说明
+### 使用说明
 
 	IE 中： 
 
