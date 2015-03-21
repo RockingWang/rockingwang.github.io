@@ -1,3 +1,10 @@
+---
+layout: post
+title: Linux的启动说明
+category: Linux
+keywords: linux init
+---
+
 #Linux的启动相关
 
 >遇到情况说明：同事添加Weblogic开机自启动，导致服务器开机后黑屏，只有weblogic可以访问，其他包括Oracle数据库和SSH均无法使用。

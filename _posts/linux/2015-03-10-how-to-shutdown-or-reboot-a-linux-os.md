@@ -4,6 +4,7 @@ title:Linux的关机、重启命令
 category:Linux
 keywords:Linux 命令
 ---
+
 >有些用户会使用直接断掉电源的方式来关闭linux，这是十分危险的。因为linux与windows不同，其后台运行着许多进程，所以强制关机可能会导致进程的数据丢失﹐使系统处于不稳定的状态﹐甚至在有的系统中会损坏硬件设备。
 
 ##shutdown
