@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Linux的启动说明
-category: Linux
+category: 技术
 keywords: linux init
 ---
 

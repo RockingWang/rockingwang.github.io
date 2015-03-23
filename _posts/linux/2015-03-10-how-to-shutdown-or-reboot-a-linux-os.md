@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Linux的关机、重启命令
-category: Linux
+category: 技术
 keywords: Linux 命令
 ---
 

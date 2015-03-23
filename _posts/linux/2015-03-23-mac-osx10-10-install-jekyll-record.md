@@ -1,3 +1,9 @@
+---
+layout: post
+title: Mac OSX10.10安装jekyll记录
+category: 技术
+keywords: jekyll
+---
 #Mac OSX10.10 安装jekyll记录
 
 ###安装方式

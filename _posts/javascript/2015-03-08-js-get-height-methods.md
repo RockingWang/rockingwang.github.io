@@ -1,7 +1,7 @@
 ---
 layout: post
 title: javascript获取页面高度、宽度相关信息
-category: javascript
+category: 技术
 keywords: javascript height
 ---
 ### 浏览器区别
