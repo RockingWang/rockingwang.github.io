@@ -1,0 +1,512 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  JavaScript 获取页面高度、宽度相关信息 - 王励志的Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="王励志的Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="about.html">About</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 王励志的Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+       
+       <li><a href="index.html">HOME</a></li>
+    <li><a href="archives.html">Archives</a></li>
+    <li><a href="about.html">ABOUT</a></li>
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="JavaScript.html">JavaScript</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="Linux.html">Linux</a></li>
+        
+            <li><a href="Mac.html">Mac</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>JavaScript 获取页面高度、宽度相关信息</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2015/3/8</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='JavaScript.html'>JavaScript</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h3 id="toc_0">浏览器区别</h3>
+
+<ul>
+<li><p>Netscape --&gt;window</p></li>
+<li><p>IE --&gt;document.body</p></li>
+</ul>
+
+<h3 id="toc_1">使用说明</h3>
+
+<p>IE 中： </p>
+
+<pre><code>document.body.clientWidth ==&gt; BODY 对象宽度 
+
+document.body.clientHeight ==&gt; BODY 对象高度 
+
+document.documentElement.clientWidth ==&gt; 可见区域宽度 
+
+document.documentElement.clientHeight ==&gt; 可见区域高度 
+</code></pre>
+
+<p>FireFox 中：</p>
+
+<pre><code>document.body.clientWidth ==&gt; BODY 对象宽度 
+
+document.body.clientHeight ==&gt; BODY 对象高度 
+
+document.documentElement.clientWidth ==&gt; 可见区域宽度 
+
+document.documentElement.clientHeight ==&gt; 可见区域高度 
+</code></pre>
+
+<p>Opera 中： </p>
+
+<pre><code>document.body.clientWidth ==&gt; 可见区域宽度 
+
+document.body.clientHeight ==&gt; 可见区域高度 
+
+document.documentElement.clientWidth ==&gt; 页面对象宽度（即 BODY 对象宽度加上 Margin 宽） 
+
+document.documentElement.clientHeight ==&gt; 页面对象高度（即 BODY 对象高度加上 Margin 高） 
+</code></pre>
+
+<h4 id="toc_2">没有定义 W3C 的标准，则</h4>
+
+<p>IE 为： </p>
+
+<pre><code>document.documentElement.clientWidth ==&gt; 0 
+
+document.documentElement.clientHeight ==&gt; 0 
+</code></pre>
+
+<p>FireFox 为： </p>
+
+<pre><code>document.documentElement.clientWidth ==&gt; 页面对象宽度（即 BODY 对象宽度加上 Margin 宽） document.documentElement.clientHeight ==&gt; 页面对象高度（即 BODY 对象高度加上 Margin 高） 
+</code></pre>
+
+<p>Opera 为： </p>
+
+<pre><code>document.documentElement.clientWidth ==&gt; 页面对象宽度（即 BODY 对象宽度加上 Margin 宽） document.documentElement.clientHeight ==&gt; 页面对象高度（即 BODY 对象高度加上 Margin 高） 
+</code></pre>
+
+<pre><code>网页可见区域宽： document.body.clientWidth 
+
+网页可见区域高： document.body.clientHeight 
+
+网页可见区域宽： document.body.offsetWidth ( 包括边线的宽 ) 
+
+网页可见区域高： document.body.offsetHeight ( 包括边线的高 ) 
+
+网页正文全文宽： document.body.scrollWidth 
+
+网页正文全文高： document.body.scrollHeight 
+
+网页被卷去的高： document.body.scrollTop 
+
+网页被卷去的左： document.body.scrollLeft 
+
+网页正文部分上： window.screenTop 
+
+网页正文部分左： window.screenLeft 
+
+屏幕分辨率的高： window.screen.height 
+
+屏幕分辨率的宽： window.screen.width 
+
+屏幕可用工作区高度： window.screen.availHeight 
+
+屏幕可用工作区宽度： window.screen.availWidth 
+</code></pre>
+
+<pre><code>HTML 精确定位 :scrollLeft,scrollWidth,clientWidth,offsetWidth 
+
+scrollHeight: 获取对象的滚动高度。 
+
+scrollLeft: 设置或获取位于对象左边界和窗口中目前可见内容的最左端之间的距离 
+
+scrollTop: 设置或获取位于对象最顶端和窗口中可见内容的最顶端之间的距离 
+
+scrollWidth: 获取对象的滚动宽度 
+
+offsetHeight: 获取对象相对于版面或由父坐标 offsetParent 属性指定的父坐标的高度 
+
+offsetLeft: 获取对象相对于版面或由 offsetParent 属性指定的父坐标的计算左侧位置 
+
+offsetTop: 获取对象相对于版面或由 offsetTop 属性指定的父坐标的计算顶端位置 
+
+event.clientX 相对文档的水平座标 
+
+event.clientY 相对文档的垂直座标 
+
+event.offsetX 相对容器的水平坐标 
+
+event.offsetY 相对容器的垂直坐标 
+
+document.documentElement.scrollTop 垂直方向滚动的值 
+
+event.clientX+document.documentElement.scrollTop 相对文档的水平座标 + 垂直方向滚动的量 
+</code></pre>
+
+<pre><code>实现代码 
+
+&lt; !DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; 
+
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt; 
+
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt; 
+
+&lt;head&gt; 
+
+&lt;title&gt; 请调整浏览器窗口 &lt;/title&gt; &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=gb2312&quot;&gt; 
+
+&lt;/meta&gt;&lt;/head&gt; 
+
+&lt;body&gt; 
+
+&lt;h2 align=&quot;center&quot;&gt; 请调整浏览器窗口大小 &lt;/h2&gt;&lt;hr /&gt; 
+
+&lt;form action=&quot;#&quot; method=&quot;get&quot; name=&quot;form1&quot; id=&quot;form1&quot;&gt; 
+
+&lt;!-- 显示浏览器窗口的实际尺寸 --&gt; 
+
+浏览器窗口 的 实际高度 : &lt;input type=&quot;text&quot; name=&quot;availHeight&quot; size=&quot;4&quot;/&gt;&lt;br /&gt; 
+
+浏览器窗口 的 实际宽度 : &lt;input type=&quot;text&quot; name=&quot;availWidth&quot; size=&quot;4&quot;/&gt;&lt;br /&gt; 
+
+&lt;/form&gt; 
+
+&lt;script type=&quot;text/javascript&quot;&gt; 
+
+&lt;!-- 
+
+var winWidth = 0; 
+
+var winHeight = 0; 
+
+function findDimensions() // 函数：获取尺寸 
+
+{ 
+
+// 获取窗口宽度 
+
+if (window.innerWidth) 
+
+winWidth = window.innerWidth; 
+
+else if ((document.body) &amp;&amp; (document.body.clientWidth)) 
+
+winWidth = document.body.clientWidth; 
+
+// 获取窗口高度 
+
+if (window.innerHeight) 
+
+winHeight = window.innerHeight; 
+
+else if ((document.body) &amp;&amp; (document.body.clientHeight)) 
+
+winHeight = document.body.clientHeight; 
+
+// 通过深入 Document 内部对 body 进行检测，获取窗口大小 
+
+if (document.documentElement &amp;&amp; document.documentElement.clientHeight &amp;&amp; document.documentElement.clientWidth) 
+
+{ 
+
+winHeight = document.documentElement.clientHeight; 
+
+winWidth = document.documentElement.clientWidth; 
+
+} 
+
+// 结果输出至两个文本框 
+
+document.form1.availHeight.value= winHeight; 
+
+document.form1.availWidth.value= winWidth; 
+
+} 
+
+findDimensions(); 
+
+// 调用函数，获取数值 
+
+window.onresize=findDimensions; 
+
+//--&gt; 
+
+&lt;/script&gt; 
+
+&lt;/body&gt; 
+</code></pre>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15011402590547.html" 
+          title="Previous Post: Linux的关机、重启命令">&laquo; Linux的关机、重启命令</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1501142245&di=794559c9f4c081f75ab0b20976abefa6&src=http://cdn.img.xiushuang.com/avatar/122737/big/413196.jpg" /></div>
+            
+                <h1>王励志的Blog</h1>
+                <div class="site-des">活到老 学到老</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/RockingWang" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:rocking1216@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="JavaScript.html"><strong>JavaScript</strong></a>
+        
+            <a href="iOS.html"><strong>iOS</strong></a>
+        
+            <a href="Linux.html"><strong>Linux</strong></a>
+        
+            <a href="Mac.html"><strong>Mac</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15011404114222.html">SecureCRT乱码问题及解决方案</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15011403689986.html">WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15011397697474.html">SourceKit Crashed 原因分析及解决方案</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15011402869037.html">Linux的启动相关</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15011402590547.html">Linux的关机、重启命令</a>
+			      </li>
+		     
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

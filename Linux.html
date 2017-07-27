@@ -1,0 +1,466 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Linux - 王励志的Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="王励志的Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="about.html">About</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 王励志的Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+       
+       <li><a href="index.html">HOME</a></li>
+    <li><a href="archives.html">Archives</a></li>
+    <li><a href="about.html">ABOUT</a></li>
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="JavaScript.html">JavaScript</a></li>
+        
+            <li><a href="iOS.html">iOS</a></li>
+        
+            <li><a href="Linux.html">Linux</a></li>
+        
+            <li><a href="Mac.html">Mac</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15011403689986.html">
+                
+                  <h1>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<!-- <blockquote>
+<p>SSH出现冲突警告WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!</p>
+</blockquote>
+
+<h3 id="toc_0">遇到问题</h3>
+
+<pre><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!Someone could be eavesdropping on you right now (man-in-the-middle attack)!It is also possible that the RSA host key has just been changed.The fingerprint for the RSA key sent by the remote host is36:68:a6:e6:43:34:6b:82:d7:f4:df:1f:c2:e7:37:cc.Please contact your system administrator.Add correct host key in /u/xlian008/.ssh/known_hosts to get rid of this message.Offending key in /u/xlian008/.ssh/known_hosts:2RSA host key for 135.1.35.130 has changed and you have requested strict checking.Host key verification failed.
+</code></pre>
+
+<h2 id="toc_1">原因分析</h2>
+
+<p>ssh会把你每个你访问过计算机的公钥(public key)都记录在<code>~/.ssh/known_hosts</code>。当下次访问相同计算机时，OpenSSH会核对公钥。如果公钥不同，OpenSSH会发出警告， 避免你受到DNS Hijack之类的攻击。<br/>
+同一IP的主机上有多个Linux系统，会经常切换，那么这些系统使用同一ip，登录过一次后就会把ssh信息记录在本地的<code>~/.ssh/known_hsots</code>文件中，切换该系统后再用ssh访问这台主机就会出现冲突警告。或者Linux服务器重新安装ssh，也会导致冲突警告。</p>
+
+<h3 id="toc_2">解决方案</h3>
+
+<ol>
+<li>手动删除修改known_hsots里面的内容；</li>
+<li>修改配置文件<code>~/.ssh/config</code>，加上这两行，重启服务器。
+<code>StrictHostKeyChecking no</code>
+<code>UserKnownHostsFile /dev/null</code></li>
+</ol>
+
+<h5 id="toc_3">优缺点：</h5>
+
+<ol>
+<li>需要每次手动删除文件内容，一些自动化脚本的无法运行（在SSH登陆时失败），但是安全性高；</li>
+<li>SSH登陆时会忽略known_hsots的访问，但是安全性低；</li>
+</ol>
+ -->
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2015/3/31</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15011402869037.html">
+                
+                  <h1>Linux的启动相关</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<!-- <blockquote>
+<p>遇到情况说明：同事添加Weblogic开机自启动，导致服务器开机后黑屏，只有weblogic可以访问，其他包括Oracle数据库和SSH均无法使用。</p>
+</blockquote>
+
+<h3 id="toc_0">解决方案</h3>
+
+<p>远程访问weblogic的web管理器进行关闭服务，关闭后其他服务顺序自启动。</p>
+
+<h3 id="toc_1">原因</h3>
+
+<p>在<code>/etc/rc.d/rc5.d</code>文件夹中得<code>S20weblogic</code>的启动顺序为20，先于X、Oracle、SSH等服务启动，故没有图形界面，无法访问数据库和SSH。</p>
+
+<h3 id="toc_2">扩展</h3>
+
+<h4 id="toc_3">Linux开机自启服务</h4>
+
+<p>Linux启动时，会运行<code>init</code>程序，由它启动后面的任务，包括多用户环境、网络等。</p>
+
+<pre><code>修改文件：/etc/inittab 中 id:3:initdefault的数字
+</code></pre>
+
+<p>Linux操作系统有六种不同的运行级（run level），在不同的运行级下，系统有着不同的状态，分别为：</p>
+
+<ul>
+<li>0：停机：千万不要把initdefault设置为0，会导致Linux无法启动</li>
+<li>1：单用户模式：类似win9x的安全模式</li>
+<li>2：多用户：但是没有NFS</li>
+<li>3：完全多用户模式：标准运行级，常见的字符终端界面</li>
+<li>4：一般不用，在一些特殊情况下使用</li>
+<li>5：X11，即进到X-Window系统</li>
+<li>6：重新启动：会导致Linux不断地重新启动</li>
+</ul>
+ -->
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2015/3/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15011402590547.html">
+                
+                  <h1>Linux的关机、重启命令</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<!-- <blockquote>
+<p>有些用户会使用直接断掉电源的方式来关闭linux，这是十分危险的。因为linux与windows不同，其后台运行着许多进程，所以强制关机可能会导致进程的数据丢失﹐使系统处于不稳定的状态﹐甚至在有的系统中会损坏硬件设备。</p>
+</blockquote>
+
+<h3 id="toc_0">shutdown</h3>
+
+<p>在系统关机前使用<code>shutdown</code>命令，系统管理员会通知所有登录的用户系统将要关闭，并且<code>login</code>指令会被冻结﹐即新的用户不能再登录。</p>
+
+<p><code>shutdown</code>执行它的工作是送信号<code>signal</code>给<code>init</code>程序﹐要求它改变<code>runlevel</code>。<code>Runlevel 0</code>被用来停机<code>halt</code>﹐<code>runlevel 6</code>是用来重新激活<code>reboot</code>系统﹐而<code>runlevel 1</code>则是被用来让系统进入管理工作可以进行的状态﹔这是预设的﹐假定没有<code>-h</code>也没有<code>-r</code>参数给<code>shutdown</code>。要想了解在停机<code>halt</code>或者重新开机<code>reboot</code>过程中做了哪些动作﹐你可以在这个文件/etc/inittab里看到这些runlevels相关的资料。</p>
+
+<h4 id="toc_1">shutdown参数说明</h4>
+
+<pre><code>[-t] 在改变到其它runlevel之前﹐告诉init多久以后关机。
+[-r] 重启计算器。
+[-k] 并不真正关机﹐只是送警告信号给每位登录者〔login〕。
+[-h] 关机后关闭电源〔halt〕。
+[-n] 不用init﹐而是自己来关机。不鼓励使用这个选项﹐而且该选项所产生的后果往往不总是你所预期得到的。
+[-c] cancel current process取消目前正在执行的关机程序。所以这个选项当然没有时间参数﹐但是可以输入一个用来解释的讯息﹐而这信息将会送到每位使用者。
+[-f] 在重启计算器〔reboot〕时忽略fsck。
+[-F] 在重启计算器〔reboot〕时强迫fsck。
+[-time] 设定关机〔shutdown〕前的时间。
+</code></pre>
+
+<h3 id="toc_2">halt</h3>
+
+<p>其实<code>halt</code>就是调用<code>shutdown -h</code>。<code>halt</code>执行时﹐杀死应用进程﹐执行sync系统调用﹐文件系统写操作完成后就会停止内核。</p>
+
+<h4 id="toc_3">halt参数说明:</h4>
+
+<pre><code>[-n] 防止sync系统调用﹐它用在用fsck修补根分区之后﹐以阻止内核用老版本的超级块〔superblock〕覆盖修补过的超级块。
+[-w] 并不是真正的重启或关机﹐只是写wtmp〔/var/log/wtmp〕纪录。
+[-d] 不写wtmp纪录〔已包含在选项[-n]中〕。
+[-f] 没有调用shutdown而强制关机或重启。
+[-i] 关机〔或重启〕前﹐关掉所有的网络接口。
+[-p] 该选项为缺省选项。就是关机时调用poweroff。
+</code></pre>
+
+<h3 id="toc_4">reboot</h3>
+
+<p><code>reboot</code>的工作过程差不多跟<code>halt</code>一样﹐不过它是引发主机重启﹐而<code>halt</code>是关机。它的参数与<code>halt</code>相差不多。</p>
+
+<h3 id="toc_5">init</h3>
+
+<p><code>init</code>是所有进程的祖先﹐它的进程号始终为1﹐所以发送TERM信号给<code>init</code>会终止所有的用户进程﹑守护进程等。<code>shutdown</code>就是使用这种机制。<code>init</code>定义了8个运行级别(runlevel)， <code>init 0</code>为关机﹐<code>init 1</code>为重启。关于<code>init</code>可以长篇大论﹐这里就不再叙述。另外还有 <code>telinit</code>命令可以改变<code>init</code>的运行级别﹐比如﹐<code>telinit -iS</code>可使系统进入单用户模式﹐并且得不到使用<code>shutdown</code>时的信息和等待时间。</p>
+ -->
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2015/3/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1501142245&di=794559c9f4c081f75ab0b20976abefa6&src=http://cdn.img.xiushuang.com/avatar/122737/big/413196.jpg" /></div>
+            
+                <h1>王励志的Blog</h1>
+                <div class="site-des">活到老 学到老</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/RockingWang" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:rocking1216@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="JavaScript.html"><strong>JavaScript</strong></a>
+        
+            <a href="iOS.html"><strong>iOS</strong></a>
+        
+            <a href="Linux.html"><strong>Linux</strong></a>
+        
+            <a href="Mac.html"><strong>Mac</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15011404114222.html">SecureCRT乱码问题及解决方案</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15011403689986.html">WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15011397697474.html">SourceKit Crashed 原因分析及解决方案</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15011402869037.html">Linux的启动相关</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15011402590547.html">Linux的关机、重启命令</a>
+			      </li>
+		     
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>
